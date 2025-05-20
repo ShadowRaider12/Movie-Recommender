@@ -1,80 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Movie Recommender</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        input[type="text"], select {
-            padding: 8px;
-            width: 300px;
-        }
-        button {
-            margin-top: 15px;
-            padding: 10px 20px;
-        }
-        .results {
-            margin-top: 30px;
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Movie Recommender</h1>
-    <form method="POST">
-        <label for="genre">Genre:</label>
-        <select name="genre" id="genre">
-            <option value="">-- Select Genre --</option>
-            <option>Sci-Fi</option>
-            <option>Action</option>
-            <option>Drama</option>
-            <option>Animation</option>
-            <option>Romance</option>
-            <option>Adventure</option>
-            <option>Fantasy</option>
-            <option>Biography</option>
-            <option>Musical</option>
-            <option>Crime</option>
-        </select>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-lg">
+        <h1 class="text-3xl font-bold mb-6 text-center">🎬 Movie Recommender</h1>
+        <form method="POST" class="space-y-4">
+            <div>
+                <label class="block mb-1">Genre</label>
+                <input type="text" name="genre" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block mb-1">Duration</label>
+                <select name="duration" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+                    <option value="any">Any</option>
+                    <option value="short">Short (0–90 mins)</option>
+                    <option value="long">Long (120+ mins)</option>
+                </select>
+            </div>
+            <div>
+                <label class="block mb-1">Director</label>
+                <input type="text" name="director" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Recommend
+            </button>
+        </form>
 
-        <label for="duration">Duration:</label>
-        <select name="duration" id="duration">
-            <option value="any">Any</option>
-            <option value="short">Short (0-90 mins)</option>
-            <option value="medium">Medium (90-120 mins)</option>
-            <option value="long">Long (120+ mins)</option>
-        </select>
-
-        <label for="director">Director (optional):</label>
-        <input type="text" name="director" id="director">
-
-        <button type="submit">Get Recommendations</button>
-    </form>
-
-    {% if recommendations %}
-    <div class="results">
-        <h2>Recommendations:</h2>
-        <ul>
-            {% for movie in recommendations %}
-                <li><strong>{{ movie[1] }}</strong> | Genre: {{ movie[2] }} | Director: {{ movie[3] }} | Duration: {{ movie[4] }} mins</li>
-            {% endfor %}
-        </ul>
+        {% if recommendations %}
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold mb-2">Results:</h2>
+            <pre class="bg-gray-700 p-4 rounded whitespace-pre-wrap">{{ recommendations }}</pre>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
 </body>
 </html>
