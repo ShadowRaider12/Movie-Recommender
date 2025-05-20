@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, flash
-from movie_recommender import recommend_movies
+from movie_db import recommend_movies
+
+app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def home():
