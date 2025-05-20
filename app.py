@@ -10,7 +10,7 @@ def home():
         duration_pref = request.form.get('duration')
         director = request.form.get('director')
 
-        recommendations = recommend_movies(genre, duration, director)   
+        recommendations = recommend_movies(genre, duration, director if director else None)   
     
     return render_template('index.html', recommendations=recommendations)
 
