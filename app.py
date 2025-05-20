@@ -1,3 +1,6 @@
+from flask import Flask, render_template, request, flash
+from movie_recommender import recommend_movies
+
 @app.route("/", methods=["GET", "POST"])
 def home():
     recommendations = []
