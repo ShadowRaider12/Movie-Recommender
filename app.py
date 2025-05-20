@@ -25,3 +25,6 @@ def home():
                 flash("No matching movies found.", "info")
 
     return render_template("index.html", recommendations=recommendations)
+
+if __name__ == "__main__":
+    app.run(debug=True)
