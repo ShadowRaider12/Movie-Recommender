@@ -7,7 +7,7 @@ def home():
     recommendations = []
     if request.method == 'POST':
         genre = request.form.get('genre')
-        duration_pref = request.form.get('duration')
+        duration = request.form.get('duration')
         director = request.form.get('director')
 
         recommendations = recommend_movies(genre, duration, director if director else None)   
