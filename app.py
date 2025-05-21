@@ -23,10 +23,19 @@ def home():
                 duration if duration else "any",
                 director if director else None
             )
-            if not recommendations:
+            recs = recommend_movies(genre, duration, director)
+
+            if not recs:
                 flash("No matching movies found.", "info")
+                recommendations = []
+            else:
+                recommendations = [
+                    f"🎬 {movie[1]} | 🎭 {movie[2]} | Dir: {movie[3]} | ⏱ {movie[4]} mins"
+                    for movie in recs
+                ]
 
     return render_template("index.html", recommendations=recommendations)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
