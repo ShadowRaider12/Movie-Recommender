@@ -48,10 +48,17 @@
 
         {% if recommendations %}
         <div class="mt-6">
-            <h2 class="text-xl font-semibold mb-2">Results:</h2>
-            <pre class="bg-gray-700 p-4 rounded whitespace-pre-wrap">{{ recommendations }}</pre>
+            <h2 class="text-xl font-semibold text-white mb-4">Recommendations:</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {% for movie in recommendations.split('\n') if movie %}
+                <div class="bg-white/10 text-white backdrop-blur-md rounded-xl p-4 shadow-md border border-white/20">
+                <p>{{ movie }}</p>
+                </div>
+            {% endfor %}
+            </div>
         </div>
         {% endif %}
+
     </div>
     <script>
         const form = document.querySelector("form");
