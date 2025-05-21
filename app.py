@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, flash
 from movie_db import recommend_movies
 
 app = Flask(__name__)
+app.secret_key = "n3xus_2025_movie_recs"
+
 
 @app.route("/", methods=["GET", "POST"])
 def home():
