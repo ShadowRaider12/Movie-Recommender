@@ -8,65 +8,53 @@
 <body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
     <div class="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-lg">
         <h1 class="text-3xl font-bold mb-6 text-center">🎬 Movie Recommender</h1>
+
         <form method="POST" class="space-y-4">
             <div>
                 <label class="block mb-1">Genre</label>
                 <select name="genre" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
                     <option value="Action">Action</option>
-                    <option value="Sci-Fi">Sci-Fi</option>
                     <option value="Drama">Drama</option>
-                    <option value="Animation">Animation</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
                     <option value="Romance">Romance</option>
-                    <option value="Adventure">Adventure</option>
+                    <option value="Animation">Animation</option>
                     <option value="Fantasy">Fantasy</option>
-                    <option value="Biography">Biography</option>
-                    <option value="Musical">Musical</option>
                     <option value="Crime">Crime</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Biography">Biography</option>
                 </select>
             </div>
 
             <div>
                 <label class="block mb-1">Duration</label>
                 <select name="duration" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
-                    <option value="Short">Short (0–90 mins)</option>
-                    <option value="Medium">Medium (90–120 mins)</option>
-                    <option value="Long">Long (120+ mins)</option>
+                    <option value="any">Any</option>
+                    <option value="short">Short (0–90 mins)</option>
+                    <option value="medium">Medium (90–120 mins)</option>
+                    <option value="long">Long (120+ mins)</option>
                 </select>
             </div>
+
             <div>
-                <label class="block mb-1">Director</label>
+                <label class="block mb-1">Director (optional)</label>
                 <input type="text" name="director" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
             </div>
+
             <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Recommend
             </button>
         </form>
 
-        <div id="loading" class="hidden flex items-center justify-center mt-4">
-            <div class="w-8 h-8 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin"></div>
-        </div>
-
         {% if recommendations %}
         <div class="mt-6">
-            <h2 class="text-xl font-semibold text-white mb-4">Recommendations:</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {% for movie in recommendations %}
-                <div class="bg-white/10 text-white backdrop-blur-md rounded-xl p-4 shadow-md border border-white/20 transform transition-transform duration-300 hover:scale-105 hover:bg-white/20">
-                <p>{{ movie }}</p>
-                </div>
-            {% endfor %}
-            </div>
+            <h2 class="text-xl font-semibold mb-2">Results:</h2>
+            <ul class="space-y-2">
+                {% for movie in recommendations %}
+                    <li class="bg-gray-700 p-3 rounded">{{ movie }}</li>
+                {% endfor %}
+            </ul>
         </div>
         {% endif %}
-
     </div>
-    <script>
-        const form = document.querySelector("form");
-        const loading = document.getElementById("loading");
-
-        form.addEventListener("submit", () => {
-        loading.classList.remove("hidden");
-        });
-    </script>
 </body>
 </html>
