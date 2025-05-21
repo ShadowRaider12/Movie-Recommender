@@ -6,11 +6,11 @@ def recommend_movies(genre, duration_pref, director = None):
     
     duration_pref = duration_pref.lower()
 
-    if duration_pref == "Short":
+    if duration_pref == "short":
         duration_condition = "duration < 90"
-    if duration_pref == "Medium":
+    elif duration_pref == "medium":
         duration_condition = "duration BETWEEN 90 AND 120"
-    if duration_pref == "Long":
+    elif duration_pref == "long":
         duration_condition = "duration > 120"
     else:
         duration_condition = "1=1"
@@ -23,7 +23,7 @@ def recommend_movies(genre, duration_pref, director = None):
             AND director LIKE ?
         """, (genre, f"%{director}%"))
     else:
-        cursor.execute(F"""
+        cursor.execute(f"""
             SELECT * FROM movies
             WHERE genre = ?
             AND {duration_condition}
