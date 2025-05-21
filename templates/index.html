@@ -48,13 +48,22 @@
 
         {% if recommendations %}
         <div class="mt-6">
-            <h2 class="text-xl font-semibold mb-2">Results:</h2>
-            <ul class="space-y-2">
+            <h2 class="text-xl font-semibold mb-4">Results:</h2>
+            <div class="space-y-2">
                 {% for movie in recommendations %}
-                    <li class="bg-gray-700 p-3 rounded">{{ movie }}</li>
-                {% endfor %}
-            </ul>
+                <div class="bg-gray-700 rounded overflow-hidden">
+                    <button 
+                        class="w-full text-left p-3 font-semibold hover:bg-gray-600 focus:outline-none"
+                        onclick="this.nextElementSibling.classList.toggle('hidden')">
+                        {{ movie.split('|')[0] }} <span class="text-gray-400 text-sm">(click to expand)</span>
+                    </button>
+                <div class="hidden p-3 border-t border-gray-600">
+                    {{ movie }}
+                </div>
+            </div>
+            {% endfor %}
         </div>
+    </div>
         {% endif %}
     </div>
 </body>
