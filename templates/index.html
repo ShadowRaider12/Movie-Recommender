@@ -42,6 +42,10 @@
             </button>
         </form>
 
+        <div id="loading" class="hidden flex items-center justify-center mt-4">
+            <div class="w-8 h-8 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin"></div>
+        </div>
+
         {% if recommendations %}
         <div class="mt-6">
             <h2 class="text-xl font-semibold mb-2">Results:</h2>
@@ -49,5 +53,13 @@
         </div>
         {% endif %}
     </div>
+    <script>
+        const form = document.querySelector("form");
+        const loading = document.getElementById("loading");
+
+        form.addEventListener("submit", () => {
+        loading.classList.remove("hidden");
+        });
+    </script>
 </body>
 </html>
