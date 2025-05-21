@@ -96,5 +96,3 @@ python web_interface.py
 python app.py
 pip install flask
 python app.py
-python app.py
-git config pull.rebase false
