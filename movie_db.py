@@ -4,10 +4,12 @@ def recommend_movies(genre, duration_pref, director = None):
     conn = sqlite3.connect("movie_app.sqlite3")
     cursor = conn.cursor()
     
+    duration_pref = duration_pref.lower()
+
     if duration_pref == "Short":
         duration_condition = "duration < 90"
     if duration_pref == "Medium":
-        duration_condition == "duration BETWEEN 90 AND 120"
+        duration_condition = "duration BETWEEN 90 AND 120"
     if duration_pref == "Long":
         duration_condition = "duration > 120"
     else:
@@ -28,5 +30,5 @@ def recommend_movies(genre, duration_pref, director = None):
             """, (genre,))
     
     results = cursor.fetchall()
-    conn.close
+    conn.close()
     return results
