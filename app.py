@@ -13,7 +13,7 @@ def home():
         duration = request.form.get("duration", "").strip()
         director = request.form.get("director", "").strip()
 
-        if genre == "":
+        if genre == "Any":
             flash("Please select a genre.", "warning")
         elif duration not in ["short", "medium", "long", "any"]:
             flash("Invalid duration selected.", "warning")
