@@ -23,5 +23,16 @@ instance/
 *.log
 
 # Static build or compiled assets
-staticfiles/
-# Coverage reports
+static/
+
+# Certificates
+*.pem
+
+# Web server files
+.wget-hsts
+.vscode-server
+.windsurf-server
+.cursor-server
+
+#SSH Commands
+*.sh
