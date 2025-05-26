@@ -36,3 +36,6 @@ static/
 
 #SSH Commands
 *.sh
+
+#Bash
+.bash_history
