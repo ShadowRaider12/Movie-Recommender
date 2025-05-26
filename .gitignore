@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# VSCode / IDE configs
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# SQLite DB (optional — remove this if you want to push it)
+*.sqlite3
+
+# Flask instance/config
+instance/
+*.log
+
+# Static build or compiled assets
+staticfiles/
+# Coverage reports
